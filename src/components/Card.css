@@ -52,10 +52,10 @@
 }
 
 .stub-number {
-  font-size: 2.2rem;
-  /* Much Larger */
-  font-weight: 900;
-  /* Extra Bold */
+  font-size: 1.5rem;
+  /* Matches Main Card Number */
+  font-weight: bold;
+  /* Bold */
   color: #000;
   text-align: center;
   margin-top: 15px;
@@ -77,15 +77,7 @@
   width: 100%;
 }
 
-.stub-number {
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #333;
-  margin-top: 2px;
-  text-align: center;
-  transform: none;
-  /* Ensure no rotation */
-}
+/* Legacy style removed */
 
 /* Original Card Styles adapted to scope */
 .card-header {

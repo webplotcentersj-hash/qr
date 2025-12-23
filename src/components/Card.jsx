@@ -75,7 +75,7 @@ const Card = ({ number = "100001", qrValue }) => {
                     <div key={stub} className="stub">
                         <div className="stub-content">
                             <QRCodeCanvas value={qrValue || number} size={50} />
-                            <span className="stub-number" style={{ fontSize: '0.8rem', color: '#333' }}>N°: {number}</span>
+                            <span className="stub-number" style={{ color: '#333' }}>N°: {number}</span>
                         </div>
                     </div>
                 ))}
