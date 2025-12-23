@@ -85,13 +85,13 @@ function App() {
     // Our card is 600px width.
 
     const doc = new jsPDF({
-      orientation: 'landscape',
+      orientation: 'portrait',
       unit: 'mm',
       format: 'a4'
     });
 
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
+    const pageWidth = doc.internal.pageSize.getWidth(); // 210mm
+    const pageHeight = doc.internal.pageSize.getHeight(); // 297mm
 
     try {
       for (let i = 0; i < total; i++) {
@@ -104,34 +104,49 @@ function App() {
         if (cardRef.current) {
           const dataUrl = await toJpeg(cardRef.current, { quality: 0.95, backgroundColor: 'white', pixelRatio: 3 });
 
-          // Card dimensions
-          const imgWidth = 220; // mm (Fits A4 Landscape 297mm width)
-          const imgHeight = (350 / 960) * imgWidth; // Approx 80mm
+          // Layout Configuration
+          // Page Width: 210mm
+          // Right Margin for binding: 25mm (approx 2.5cm to be safe, user asked for ~2cm)
+          // Left Margin: 5mm (minimal)
+          // Available Width for Card: 210 - 25 - 5 = 180mm
 
-          // 2 Cards per page logic
-          // Index on current page (0 or 1)
-          const positionOnPage = i % 2;
+          const rightMargin = 25;
+          const leftMargin = 5;
+          const availableWidth = pageWidth - rightMargin - leftMargin;
 
-          // Add new page if it's the first card of a new set (and not the very first card)
+          const imgWidth = availableWidth;
+          // Card Aspect Ratio: 960px / 350px = 2.74
+          const imgHeight = (350 / 960) * imgWidth; // Approx 65mm for 180mm width.
+
+          // 3 Cards per page logic
+          const itemsPerPage = 3;
+          const positionOnPage = i % itemsPerPage;
+
+          // Add new page if it's the start of a new group (and not the very first one)
           if (i > 0 && positionOnPage === 0) {
             doc.addPage();
           }
 
-          const x = (pageWidth - imgWidth) / 2; // Center horizontally
+          // Horizontal Position: 
+          // Aligned to Left Margin (5mm) so the Right Margin is empty.
+          const x = leftMargin;
 
-          // Vertical positioning:
-          // If pos 0: Top half center
-          // If pos 1: Bottom half center
-          // A4 Height = 210mm. 
-          // Top center approx y = 20mm
-          // Bottom center approx y = 120mm
-          const buffer = 15; // margin between cards
-          const startY = (pageHeight - (imgHeight * 2 + buffer)) / 2;
+          // Vertical Positioning:
+          // 3 items of ~65mm height = ~195mm total used.
+          // Page Height 297mm. 
+          // Vertical space remaining = 297 - 195 = 102mm.
+          // Top margin = (PageHeight - (TotalItemsHeight + Gaps)) / 2
 
-          const y = startY + (positionOnPage * (imgHeight + buffer));
+          const gap = 10; // 10mm gap between cards
+          const totalContentHeight = (imgHeight * itemsPerPage) + (gap * (itemsPerPage - 1));
+
+          const startY = (pageHeight - totalContentHeight) / 2;
+          const y = startY + (positionOnPage * (imgHeight + gap));
 
           doc.addImage(dataUrl, 'JPEG', x, y, imgWidth, imgHeight);
-          // doc.text(`Tarjeta N° ${currentNum}`, 10, y + 10); // Debug text removed
+
+          // Optional: Draw cut lines between cards if desired, but user asked to remove lines on stubs, 
+          // so we keep it clean.
         }
         setProgress({ current: i + 1, total });
       }

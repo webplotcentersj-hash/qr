@@ -34,8 +34,7 @@
   width: 120px;
   /* Fixed width for each vertical strip */
   height: 100%;
-  border-left: 2px dashed #999;
-  /* Dashed line separator */
+  /* border-left: 2px dashed #999; Removed as per request */
   border-bottom: none;
   /* Remove horizontal separators */
   display: flex;
