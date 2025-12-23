@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   position: relative;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; Removed as per request */
   display: flex;
   /* Main layout is now flex row */
   flex-direction: row;
