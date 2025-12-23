@@ -106,16 +106,10 @@ function App() {
 
           // Layout Configuration
           // Page Width: 210mm
-          // Right Margin for binding: 25mm (approx 2.5cm to be safe, user asked for ~2cm)
-          // Right Margin for binding: 40mm (4cm) to give "more space"
-          // Left Margin: 5mm (minimal)
-          // Available Width for Card: 210 - 40 - 5 = 165mm
+          // Request: "Centered". Retaining sufficient margin for binding (3cm each side).
 
-          const rightMargin = 40;
-          const leftMargin = 5;
-          const availableWidth = pageWidth - rightMargin - leftMargin;
-
-          const imgWidth = availableWidth;
+          const margin = 30;
+          const imgWidth = pageWidth - (margin * 2); // 210 - 60 = 150mm
           // Card Aspect Ratio: 960px / 350px = 2.74
           const imgHeight = (350 / 960) * imgWidth; // Approx 65mm for 180mm width.
 
@@ -128,9 +122,8 @@ function App() {
             doc.addPage();
           }
 
-          // Horizontal Position: 
-          // Aligned to Left Margin (5mm) so the Right Margin is empty.
-          const x = leftMargin;
+          // Horizontal Position: Centered
+          const x = margin;
 
           // Vertical Positioning:
           // 3 items of ~65mm height = ~195mm total used.
