@@ -52,14 +52,18 @@
 }
 
 .stub-number {
-  font-size: 1.4rem;
-  /* Larger */
+  font-size: 2.2rem;
+  /* Much Larger */
   font-weight: 900;
   /* Extra Bold */
   color: #000;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 15px;
   transform: none;
+  writing-mode: vertical-rl;
+  /* Vertical Text Block */
+  text-orientation: mixed;
+  /* Rotated characters */
 }
 
 /* Horizontal Stub Layout */
