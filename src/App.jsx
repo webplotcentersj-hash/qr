@@ -107,10 +107,11 @@ function App() {
           // Layout Configuration
           // Page Width: 210mm
           // Right Margin for binding: 25mm (approx 2.5cm to be safe, user asked for ~2cm)
+          // Right Margin for binding: 40mm (4cm) to give "more space"
           // Left Margin: 5mm (minimal)
-          // Available Width for Card: 210 - 25 - 5 = 180mm
+          // Available Width for Card: 210 - 40 - 5 = 165mm
 
-          const rightMargin = 25;
+          const rightMargin = 40;
           const leftMargin = 5;
           const availableWidth = pageWidth - rightMargin - leftMargin;
 
