@@ -26,10 +26,13 @@
   height: 100%;
   display: flex;
   flex-direction: row;
+  gap: 5px;
+  /* Separation between stub columns */
 }
 
 .stub {
-  width: 33.33%;
+  /* width: 33.33%; removed for flex gap support */
+  flex: 1;
   height: 100%;
   /* border-left: 1px dashed #999; removed */
   display: flex;
