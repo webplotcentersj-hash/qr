@@ -111,7 +111,7 @@ function App() {
           const margin = 5;
           const imgWidth = pageWidth - (margin * 2); // 210 - 60 = 150mm
           // Card Aspect Ratio: 21cm / 10cm = 2.1
-          const imgHeight = (10 / 21) * imgWidth; // Aspect ratio based on actual dimensions
+          const imgHeight = (9.4 / 21) * imgWidth; // Aspect ratio based on actual dimensions (9.4cm / 21cm)
 
           // 3 Cards per page logic
           const itemsPerPage = 3;
