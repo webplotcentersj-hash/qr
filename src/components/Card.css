@@ -31,8 +31,7 @@
 .stub {
   width: 33.33%;
   height: 100%;
-  border-left: 1px dashed #999;
-  /* Dashed line added */
+  /* border-left: 1px dashed #999; removed */
   display: flex;
   flex-direction: column;
   align-items: center;
