@@ -27,7 +27,11 @@ const Card = ({ number = "100001", qrValue }) => {
                         {/* 1. Fecha */}
                         <div className="field-row">
                             <span className="field-label">Fecha:</span>
-                            <div className="field-line"></div>
+                            <div className="field-line-date" style={{ width: '30px' }}></div>
+                            <span style={{ margin: '0 5px' }}>/</span>
+                            <div className="field-line-date" style={{ width: '30px' }}></div>
+                            <span style={{ margin: '0 5px' }}>/</span>
+                            <div className="field-line-date" style={{ width: '40px' }}></div>
                         </div>
 
                         {/* 2. Pozo / Tipo */}
