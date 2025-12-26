@@ -66,8 +66,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  /* Reduced gap to fit better if needed */
+  gap: 35px;
+  /* Increased gap to push number down to Comments level */
   width: 100%;
 }
 
