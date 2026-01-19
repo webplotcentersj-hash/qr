@@ -113,29 +113,20 @@ function App() {
           // Card Aspect Ratio: 21cm / 10cm = 2.1
           const imgHeight = (9.4 / 21) * imgWidth; // Aspect ratio based on actual dimensions (9.4cm / 21cm)
 
-          // 3 Cards per page logic
-          const itemsPerPage = 3;
-          const positionOnPage = i % itemsPerPage;
+          // 1 Card per page logic
+          const itemsPerPage = 1;
 
-          // Add new page if it's the start of a new group (and not the very first one)
-          if (i > 0 && positionOnPage === 0) {
+          // Add new page for every card except the first one
+          if (i > 0) {
             doc.addPage();
           }
 
           // Horizontal Position: Centered
           const x = margin;
 
-          // Vertical Positioning:
-          // 3 items of ~65mm height = ~195mm total used.
-          // Page Height 297mm. 
-          // Vertical space remaining = 297 - 195 = 102mm.
-          // Top margin = (PageHeight - (TotalItemsHeight + Gaps)) / 2
-
-          const gap = 10; // 10mm gap between cards
-          const totalContentHeight = (imgHeight * itemsPerPage) + (gap * (itemsPerPage - 1));
-
-          const startY = (pageHeight - totalContentHeight) / 2;
-          const y = startY + (positionOnPage * (imgHeight + gap));
+          // Vertical Positioning: Centered
+          const startY = (pageHeight - imgHeight) / 2;
+          const y = startY;
 
           doc.addImage(dataUrl, 'JPEG', x, y, imgWidth, imgHeight);
 
